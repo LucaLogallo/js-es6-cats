@@ -47,19 +47,19 @@ $(function(){
     },
     {
       nome : 'micia',
-      età : 0.5,
+      età : 6,
       colore : '#A52A2A',
       sesso : 'femmina'
     },
     {
       nome : 'miao',
-      età : 0.8,
+      età : 3,
       colore : '#A9A9A9',
       sesso : 'femmina'
     },
     {
       nome : 'aristogatto',
-      età : 1,
+      età : 3,
       colore : '#A9A9A9',
       sesso : 'maschio'
     },
@@ -109,27 +109,31 @@ $(function(){
 
   newArrGatti.forEach((gatto) =>{
     $(".wrapper #gattiAggiornati ul ").append(stamp1(gatto.colore,gatto.nome,gatto.caratteristichegatto));
-    console.log(gatto);
-  })
+    console.log(stamp1(gatto.colore,gatto.nome,gatto.caratteristichegatto));
+  });
+
+  const newArrGattiFemmine = newArrGatti.filter((gatto) => gatto.sesso === 'femmina');
+  const newArrGattiMaschi = newArrGatti.filter((gatto)=> gatto.sesso === 'maschio');
+  console.log(newArrGattiFemmine);
+  console.log(newArrGattiMaschi);
+
+  newArrGattiFemmine.forEach((gatto) =>{
+    $(".wrapper #gatte ul ").append(stamp1(gatto.colore,gatto.nome,gatto.caratteristichegatto));
+    console.log(stamp1(gatto.colore,gatto.nome,gatto.caratteristichegatto));
+  });
   
+  newArrGattiMaschi.forEach((gatto) =>{
+    $(".wrapper #gattiMaschi ul ").append(stamp1(gatto.colore,gatto.nome,gatto.caratteristichegatto));
+    console.log(stamp1(gatto.colore,gatto.nome,gatto.caratteristichegatto));
+  });
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+  const newArrGattiUnisex = [...newArrGattiFemmine,...newArrGattiMaschi];
+
+  newArrGattiUnisex.forEach((gatto) =>{
+    $(".wrapper #primaLeFemmine ul ").append(stamp1(gatto.colore,gatto.nome,gatto.caratteristichegatto));
+    console.log(stamp1(gatto.colore,gatto.nome,gatto.caratteristichegatto));
+  });
   
   /* FUNZIONI */
   //funzione stampa
@@ -149,20 +153,23 @@ $(function(){
 
   //funzione stampa con aggiunta informazione (la faccio per imparare bene )
   function stamp1(coloregatto, nome, caratteristiche){
-    let car_ = '';
-    if(caratteristiche.length > 0){
-       car_= `
-        <i class="fas fa-ribbon" style="colore:${caratteristiche[0]},opacity:${caratteristiche[1]}"></i>
+    let car = '';
+    if(typeof caratteristiche == 'object'){ //avrei dovuto passare il ...caratteristiche
+       car = `
+        <i class="fas fa-ribbon" style="color:${caratteristiche.colore};opacity:${caratteristiche.opacity};"></i>
       `
     }
+    console.log(car);
     let html = `
     <li>
     <i class="fas fa-cat" style="color:${coloregatto}"></i>
-    ${car_}
+    ${car}
     <span>
       ${nome}
     </span>
 </li>
     `
+
+    return html;
   }
 });

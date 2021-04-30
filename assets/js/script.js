@@ -108,7 +108,7 @@ $(function(){
   });
 
   newArrGatti.forEach((gatto) =>{
-    $(".wrapper #gattiAggiornati ul li span").append(stamp(gatto.nome,gatto.colore));
+    $(".wrapper #gattiAggiornati ul ").append(stamp1(gatto.colore,gatto.nome,gatto.caratteristichegatto));
     console.log(gatto);
   })
   
@@ -147,5 +147,22 @@ $(function(){
   return html; //restituisco "l'html"
   };
 
-  //funzione stampa con aggiunta informazione (la faccio per imparare bene)
+  //funzione stampa con aggiunta informazione (la faccio per imparare bene )
+  function stamp1(coloregatto, nome, caratteristiche){
+    let car_ = '';
+    if(caratteristiche.length > 0){
+       car_= `
+        <i class="fas fa-ribbon" style="colore:${caratteristiche[0]},opacity:${caratteristiche[1]}"></i>
+      `
+    }
+    let html = `
+    <li>
+    <i class="fas fa-cat" style="color:${coloregatto}"></i>
+    ${car_}
+    <span>
+      ${nome}
+    </span>
+</li>
+    `
+  }
 });

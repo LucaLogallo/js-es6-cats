@@ -1,0 +1,42 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+}
+#gatti,#gattiAggiornati ul li span{
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  border:1px solid black;
+  padding: 2%;
+  background-image: linear-gradient(red, yellow, green);
+  text-align: center;
+}
+
+#gatti ul ,#gattiAggiornati ul li span{
+  text-decoration: none;
+  list-style: none;
+}
+
+#gatti ul li,#gattiAggiornati ul li span{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+#gatti ul li i,#gattiAggiornati ul li span{
+  font-size: 50px;
+}
+
+#gatti ul li span,#gattiAggiornati ul li span{
+  font-size: 25px;
+  line-height: 50px;
+}
+
+
